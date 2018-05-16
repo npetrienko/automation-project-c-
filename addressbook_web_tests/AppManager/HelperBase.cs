@@ -11,5 +11,19 @@ namespace WebAddressbookTests
         {
             this.driver = driver;
         }
+
+        public Boolean IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch(NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
     }
 }

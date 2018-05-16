@@ -11,6 +11,8 @@ namespace WebAddressbookTests
         public String UserName { get; set; }
         public String Password { get; set; }
 
+        public AccountData() { }
+
         public AccountData(String userName, String password)
         {
             UserName = userName;
