@@ -23,14 +23,26 @@ namespace WebAddressbookTests
 
         public GroupHelper GoToGroupPage()
         {
-            driver.FindElement(By.LinkText("groups")).Click();
+            if (driver.Url == $"{baseURL}addressbook/group.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return new GroupHelper(driver);
+            }
+
+            driver.Navigate().GoToUrl($"{baseURL}addressbook/group.php");
 
             return new GroupHelper(driver);
         }
 
         public ContactHelper GoToContactPage()
         {
-            driver.FindElement(By.LinkText("add new")).Click();
+            if (driver.Url == $"{baseURL}addressbook/edit.php"
+                && IsElementPresent(By.Name("firstname")))
+            {
+                return new ContactHelper(driver);
+            }
+
+            driver.Navigate().GoToUrl($"{baseURL}addressbook/edit.php");
 
             return new ContactHelper(driver);
         }

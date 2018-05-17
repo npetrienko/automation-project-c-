@@ -10,13 +10,11 @@ namespace WebAddressbookTests
 {
     public class GroupHelper : HelperBase
     {
-        public IWebElement GroupNameField
-        {
-            get { return this.driver.FindElement(By.Name("group_name")); }
-        }
-
-        IWebElement groupNameField => driver.FindElement(By.Name("group_name"));
-
+        IWebElement _groupNameField => driver.FindElement(By.Name("group_name"));
+        IWebElement _groupHeaderField => driver.FindElement(By.Name("group_header"));
+        IWebElement _groupFooterField => driver.FindElement(By.Name("group_footer"));
+        IWebElement _enterInformationButton => driver.FindElement(By.Name("submit"));
+        IWebElement _deleteGroupButton => driver.FindElement(By.Name("delete"));
 
         public GroupHelper(IWebDriver driver) : base(driver) { }
 
@@ -29,35 +27,37 @@ namespace WebAddressbookTests
 
         public GroupHelper FillGroupForm(GroupData newGroup)
         {
-           // _groupNameField = driver.FindElement(By.Name("group_name"));
-
-            groupNameField.Type(newGroup.Name);
-
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(newGroup.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(newGroup.Footer);
+            _groupNameField.Type(newGroup.Name);
+            _groupHeaderField.Type(newGroup.Header);
+            _groupFooterField.Type(newGroup.Footer);
 
             return this;
         }
 
         public GroupHelper SubmitGroupCreation()
         {
-            driver.FindElement(By.Name("submit")).Click();
+            _enterInformationButton.Click();
 
             return this;
         }
 
-        public GroupHelper SelectGroup()
+        public GroupHelper SelectGroupById(Int32 id)
         {
-            driver.FindElement(By.XPath("//span[1]/input")).Click();
+            driver.FindElement(By.XPath($"//span/input[@value='2{id}']")).Click();
+
+            return this;
+        }
+
+        public GroupHelper SelectGroupByName(String name)
+        {
+            driver.FindElement(By.XPath($"//span/input[@title='Select ({name})']")).Click();
 
             return this;
         }
 
         public GroupHelper RemoveGroup()
         {
-            driver.FindElement(By.Name("delete")).Click();
+            _deleteGroupButton.Click();
 
             return this;
         }
@@ -70,7 +70,5 @@ namespace WebAddressbookTests
 
             return this;
         }
-
-        private const String GROUP_NAME_FIELD = "group_name";
     }
 }

@@ -12,7 +12,7 @@ namespace WebAddressbookTests
         {
             appManager.Navigation
                 .GoToGroupPage()
-                .SelectGroup()
+                .SelectGroupById(5)
                 .RemoveGroup();
 
             appManager.Navigation
