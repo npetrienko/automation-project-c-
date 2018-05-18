@@ -10,6 +10,7 @@ namespace WebAddressbookTests
 {
     public class GroupHelper : HelperBase
     {
+        IWebElement _newGroupButton => driver.FindElement(By.Name("new"));
         IWebElement _groupNameField => driver.FindElement(By.Name("group_name"));
         IWebElement _groupHeaderField => driver.FindElement(By.Name("group_header"));
         IWebElement _groupFooterField => driver.FindElement(By.Name("group_footer"));
@@ -20,7 +21,7 @@ namespace WebAddressbookTests
 
         public GroupHelper InitGrouCreation()
         {
-            driver.FindElement(By.Name("new")).Click();
+            _newGroupButton.Click();
 
             return this;
         }
@@ -38,12 +39,14 @@ namespace WebAddressbookTests
         {
             _enterInformationButton.Click();
 
+            groupCache = null;
+
             return this;
         }
 
         public GroupHelper SelectGroupById(Int32 id)
         {
-            driver.FindElement(By.XPath($"//span/input[@value='2{id}']")).Click();
+            driver.FindElement(By.XPath($"//form[@method='post']//span[{id + 1}]/input")).Click();
 
             return this;
         }
@@ -58,6 +61,7 @@ namespace WebAddressbookTests
         public GroupHelper RemoveGroup()
         {
             _deleteGroupButton.Click();
+            groupCache = null;
 
             return this;
         }
@@ -69,6 +73,26 @@ namespace WebAddressbookTests
             SubmitGroupCreation();
 
             return this;
+        }
+
+        private List<GroupData> groupCache = null;
+
+        public List<GroupData> GetGroupList()
+        {
+            if (groupCache == null)
+            {
+                groupCache = new List<GroupData>();
+
+                ICollection<IWebElement> elements = driver.FindElements(By.XPath("//span[@class='group']")).ToList();
+
+                foreach (IWebElement element in elements)
+                {
+                    Int32 elementId = Int32.Parse(element.FindElement(By.TagName("input")).GetAttribute("value"));
+                    groupCache.Add(new GroupData { Id = elementId, Name = element.Text });
+                }
+            }
+
+            return new List<GroupData>(groupCache);
         }
     }
 }

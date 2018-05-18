@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace WebAddressbookTests
 {
@@ -11,12 +12,18 @@ namespace WebAddressbookTests
         public void GroupRemovalTest()
         {
             appManager.Navigation
-                .GoToGroupPage()
-                .SelectGroupById(5)
+                .GoToGroupPage();
+
+            List<GroupData> groupsBeforeDelete = appManager.GroupHelper.GetGroupList();
+
+            appManager.GroupHelper
+                .SelectGroupById(0)
                 .RemoveGroup();
 
             appManager.Navigation
                 .GoToGroupPage();
+
+            Assert.AreNotEqual(groupsBeforeDelete, appManager.GroupHelper.GetGroupList());
         }
     }
 }
