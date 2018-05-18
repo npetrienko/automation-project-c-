@@ -12,13 +12,6 @@ namespace WebAddressbookTests
         public String Name { get; set; }
         public String Header { get; set; }
         public String Footer { get; set; }
-        /*
-        public GroupData(String name = "default", String header = "default", String footer = "default")
-        {
-            Name = name;
-            Header = header;
-            Footer = footer;
-        }*/
 
         public Boolean Equals(GroupData other)
         {
