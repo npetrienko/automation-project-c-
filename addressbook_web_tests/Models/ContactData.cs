@@ -21,9 +21,9 @@ namespace WebAddressbookTests
         public String MobileTelephone { get; set; }
         public String WorkTelephone { get; set; }
         public String Fax { get; set; }
-        public String Email1 { get; set; }
-        public String Email2 { get; set; }
-        public String Email3 { get; set; }
+        public String Email_1 { get; set; }
+        public String Email_2 { get; set; }
+        public String Email_3 { get; set; }
         public String HomePage { get; set; }
         //here should be Birthday
         //here should be Anniversary
@@ -31,15 +31,5 @@ namespace WebAddressbookTests
         public String SecondaryAddress { get; set; }
         public String SecondaryHome { get; set; }
         public String SecondaryNotes { get; set; }
-
-        public ContactData(String firstName, String lastName, String nickName, String company, String workTelephone, String email1)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            NickName = nickName;
-            Company = company;
-            WorkTelephone = workTelephone;
-            Email1 = email1;
-        } 
     }
 }

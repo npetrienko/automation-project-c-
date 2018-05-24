@@ -34,7 +34,7 @@ namespace WebAddressbookTests
             return new GroupHelper(driver);
         }
 
-        public ContactHelper GoToContactPage()
+        public ContactHelper GoToCreateContactPage()
         {
             if (driver.Url == $"{baseURL}addressbook/edit.php"
                 && IsElementPresent(By.Name("firstname")))
@@ -43,6 +43,13 @@ namespace WebAddressbookTests
             }
 
             driver.Navigate().GoToUrl($"{baseURL}addressbook/edit.php");
+
+            return new ContactHelper(driver);
+        }
+
+        public ContactHelper GoToContactPage()
+        {
+            driver.Navigate().GoToUrl(baseURL + "addressbook/");
 
             return new ContactHelper(driver);
         }

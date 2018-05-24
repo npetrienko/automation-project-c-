@@ -14,6 +14,7 @@ namespace WebAddressbookTests
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         private static ThreadLocal<AppManager> app = new ThreadLocal<AppManager>();
 
@@ -25,6 +26,7 @@ namespace WebAddressbookTests
             loginHelper = new LoginHelper(driver);
             navigationHelper = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
+            contactHelper = new ContactHelper(driver);
         }
 
         ~AppManager()
@@ -71,6 +73,14 @@ namespace WebAddressbookTests
             get
             {
                 return groupHelper;
+            }
+        }
+
+        public ContactHelper ContactHelper
+        {
+            get
+            {
+                return contactHelper;
             }
         }
     }
