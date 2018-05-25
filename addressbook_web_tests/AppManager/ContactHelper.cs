@@ -37,6 +37,7 @@ namespace WebAddressbookTests
         public void SubmitContactCreation()
         {
             _enterButton.Click();
+            wait.WaitForElementImplicitly(By.Id("search_count"));
         }
 
         private void SelectContactFromListById(Int32 id)

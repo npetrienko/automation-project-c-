@@ -31,7 +31,7 @@ namespace WebAddressbookTests
 
         [Test]
         public void RemoveContactTest()
-        {
+         {
             Int32 countBefore = appManager.ContactHelper.GetContactsCount();
 
             appManager.Navigation

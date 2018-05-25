@@ -6,10 +6,12 @@ namespace WebAddressbookTests
     public class HelperBase
     {
         protected IWebDriver driver;
+        public Wait wait;
 
         public HelperBase(IWebDriver driver)
         {
             this.driver = driver;
+            wait = new Wait(driver);
         }
 
         public Boolean IsElementPresent(By by)
