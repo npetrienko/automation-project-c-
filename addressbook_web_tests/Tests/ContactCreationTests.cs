@@ -38,6 +38,9 @@ namespace WebAddressbookTests
                 .GoToContactPage()
                 .DeleteContactFromListById(1);
 
+            appManager.Navigation
+                .GoToContactPage();
+
             Assert.AreEqual(countBefore - 1, appManager.ContactHelper.GetContactsCount());
         }
     }

@@ -8,18 +8,30 @@ namespace WebAddressbookTests
     [TestFixture]
     public class GroupCreationTests : AuthTestBase
     {
-        [Test]
-        public void GroupCreationTest()
+        public static IEnumerable<GroupData> RandomGroupDataProvider()
         {
-            Int32 randValue = new Random().Next(1000);
+            Random rnd = new Random();
 
-            GroupData group = new GroupData
+            List<GroupData> groups = new List<GroupData>();
+
+            for(Int32 i = 0; i < 5; i++)
             {
-                Name = $"New group name {randValue}",
-                Header = $"New group header {randValue}",
-                Footer = $"New group footer {randValue}"
-            };
+                Int32 randValue = rnd.Next(1000);
 
+                groups.Add(new GroupData
+                {
+                    Name = $"New group name {randValue}",
+                    Header = $"New group header {randValue}",
+                    Footer = $"New group footer {randValue}"
+                });
+            }
+
+            return groups;
+        }
+
+        [Test, TestCaseSource("RandomGroupDataProvider")]
+        public void GroupCreationTest(GroupData group)
+        {
             appManager.Navigation
                 .GoToGroupPage();
 
