@@ -21,7 +21,7 @@ namespace WebAddressbookTests
                         LastName = "TestL",
                         NickName = "TestN",
                         Company = "TestCompany",
-                        WorkTelephone = "0990367766",
+                        WorkTelephone = "0990367711",
                         Email_1 = "test.test@gmail.com"
                     })
                 .SubmitContactCreation();
