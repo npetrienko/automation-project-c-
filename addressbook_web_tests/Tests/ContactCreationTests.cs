@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
 using NUnit.Framework;
-using OpenQA.Selenium;
+using MySql.Data.MySqlClient;
 
 namespace WebAddressbookTests
 {
@@ -42,6 +41,13 @@ namespace WebAddressbookTests
                 .GoToContactPage();
 
             Assert.AreEqual(countBefore - 1, appManager.ContactHelper.GetContactsCount());
+        }
+
+        [Test]
+        public void TestDbConnection()
+        {
+            MySqlConnection con = new MySqlConnection("Server=localhost;Port=3306;Database=addressbook;Uid=root;Pwd=;charset=utf8;SslMode=none;");
+            con.Open();
         }
     }
 }
