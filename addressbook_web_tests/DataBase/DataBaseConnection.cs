@@ -16,7 +16,7 @@ namespace WebAddressbookTests
 
         public DataBaseConnection()
         {
-            _connection = new MySqlConnection(@"Server = localhost:81; Database = addressbook; Uid = root; Pwd =;");
+            _connection = new MySqlConnection(@"Server=localhost;Port=3306;Database=addressbook;Uid=root;Pwd=;charset=utf8;SslMode=none;");
         }
 
         public void OpenConnection()
