@@ -2,11 +2,12 @@
 using System;
 
 namespace WebAddressbookTests
+
 {
     public class HelperBase
     {
         protected IWebDriver driver;
-        public Wait wait;
+        protected Wait wait;
 
         public HelperBase(IWebDriver driver)
         {

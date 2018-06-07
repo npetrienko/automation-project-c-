@@ -13,18 +13,18 @@ namespace WebAddressbookTests
         [Test, TestCaseSource("testData")]
         public void GroupCreationTest(GroupData group)
         {
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToGroupPage();
 
-            List<GroupData> existingGroups = appManager.GroupHelper.GetGroupList();
+            List<GroupData> existingGroups = _appManager.GroupHelper.GetGroupList();
 
-            appManager.GroupHelper
+            _appManager.GroupHelper
                 .Create(group);
 
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToGroupPage();
 
-            Assert.AreEqual(existingGroups.Count + 1, appManager.GroupHelper.GetGroupList().Count);
+            Assert.AreEqual(existingGroups.Count + 1, _appManager.GroupHelper.GetGroupList().Count);
         }
     }
 }

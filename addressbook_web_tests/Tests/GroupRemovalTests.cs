@@ -11,19 +11,19 @@ namespace WebAddressbookTests
         [Test]
         public void GroupRemovalTest()
         {
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToGroupPage();
 
-            List<GroupData> groupsBeforeDelete = appManager.GroupHelper.GetGroupList();
+            List<GroupData> groupsBeforeDelete = _appManager.GroupHelper.GetGroupList();
 
-            appManager.GroupHelper
+            _appManager.GroupHelper
                 .SelectGroupById(0)
                 .RemoveGroup();
 
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToGroupPage();
 
-            Assert.AreNotEqual(groupsBeforeDelete, appManager.GroupHelper.GetGroupList());
+            Assert.AreNotEqual(groupsBeforeDelete, _appManager.GroupHelper.GetGroupList());
         }
     }
 }

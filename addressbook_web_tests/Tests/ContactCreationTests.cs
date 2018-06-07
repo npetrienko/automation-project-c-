@@ -1,5 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
+using WebAddressbookTests.DataBase.TableModels;
+using System.Collections.Generic;
+using WebAddressbookTests.DataBase.TableRepositories;
+using MySql.Data.MySqlClient;
 
 namespace WebAddressbookTests
 {
@@ -9,9 +13,9 @@ namespace WebAddressbookTests
         [Test]
         public void ContactCreationTest()
         {
-            Int32 countBefore = appManager.ContactHelper.GetContactsCount();
+            Int32 countBefore = _appManager.ContactHelper.GetContactsCount();
 
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToCreateContactPage()
                 .FillContactForm(new ContactData
                     {
@@ -24,22 +28,22 @@ namespace WebAddressbookTests
                     })
                 .SubmitContactCreation();
 
-            Assert.AreEqual(countBefore + 1, appManager.ContactHelper.GetContactsCount());
+            Assert.AreEqual(countBefore + 1, _appManager.ContactHelper.GetContactsCount());
         }
 
         [Test]
         public void RemoveContactTest()
          {
-            Int32 countBefore = appManager.ContactHelper.GetContactsCount();
+            Int32 countBefore = _appManager.ContactHelper.GetContactsCount();
 
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToContactPage()
                 .DeleteContactFromListById(1);
 
-            appManager.Navigation
+            _appManager.Navigation
                 .GoToContactPage();
 
-            Assert.AreEqual(countBefore - 1, appManager.ContactHelper.GetContactsCount());
+            Assert.AreEqual(countBefore - 1, _appManager.ContactHelper.GetContactsCount());
         }
     }
 }

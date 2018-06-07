@@ -7,20 +7,20 @@ using WebAddressbookTests.DataBase.TableModels;
 
 namespace WebAddressbookTests.DataBase.TableRepositories
 {
-    public class GroupRepository
+    public class AddressbookRepository
     {
         private IDbConnection _conn;
 
-        public GroupRepository(IDbConnection conn)
+        public AddressbookRepository(IDbConnection conn)
         {
             _conn = conn;
         }
 
-        public List<Group> GetAllGroups()
+        public List<Addressbook> GetAllGroups()
         {
-            String query = @"SELECT * FROM group_list";
+            String query = @"SELECT * FROM addressbook";
 
-            return _conn.Query<Group>(query).ToList();
+            return _conn.Query<Addressbook>(query).ToList();
         }
     }
 }

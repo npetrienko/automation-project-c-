@@ -19,11 +19,11 @@ namespace WebAddressbookTests
                 Password = "secret"
             };
 
-            appManager.Auth.LogOut();
+            _appManager.Auth.LogOut();
 
-            appManager.Auth.Login(account);
+            _appManager.Auth.Login(account);
 
-            Assert.IsTrue(appManager.Auth.IsLoggedIn(account));
+            Assert.IsTrue(_appManager.Auth.IsLoggedIn(account));
         }
 
         [Test]
@@ -35,11 +35,11 @@ namespace WebAddressbookTests
                 Password = "secr"
             };
 
-            appManager.Auth.LogOut();
+            _appManager.Auth.LogOut();
 
-            appManager.Auth.Login(account);
+            _appManager.Auth.Login(account);
 
-            Assert.IsFalse(appManager.Auth.IsLoggedIn());
+            Assert.IsFalse(_appManager.Auth.IsLoggedIn());
         }
     }
 }

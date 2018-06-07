@@ -96,6 +96,7 @@
     <Compile Include="DataBase\DataBaseConnection.cs" />
     <Compile Include="DataBase\TableModels\Addressbook.cs" />
     <Compile Include="DataBase\TableModels\Group.cs" />
+    <Compile Include="DataBase\TableRepositories\AddressbookRepository.cs" />
     <Compile Include="DataBase\TableRepositories\GroupRepository.cs" />
     <Compile Include="Extensions\WebElementExtensions.cs" />
     <Compile Include="Models\AccountData.cs" />
